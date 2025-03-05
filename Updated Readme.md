@@ -148,6 +148,54 @@ def main():
 if __name__ == "__main__":
     main()
 
+Add input validation & error handling - Tester & Documentor (Maulod)
+
+def compute_deductions(salary):
+    """Calculates deductions and net salary based on given salary."""
+    SSS_CONTRIBUTION = 1200
+    PHILHEALTH_RATE = 0.05
+    PAGIBIG_CONTRIBUTION = 100
+    TAX = 1875  # Assuming fixed value for simplicity
+
+    if salary < 0:
+        print("Error: Salary cannot be negative.")
+        return None
+
+    philhealth = (salary * PHILHEALTH_RATE) / 2
+    deductions = SSS_CONTRIBUTION + philhealth + PAGIBIG_CONTRIBUTION + TAX
+    net_salary = salary - deductions
+
+    return {
+        "Gross Salary": salary,
+        "SSS Deduction": SSS_CONTRIBUTION,
+        "PhilHealth Deduction": philhealth,
+        "Pag-IBIG Deduction": PAGIBIG_CONTRIBUTION,
+        "Tax Deduction": TAX,
+        "Total Deductions": deductions,
+        "Net Salary": net_salary
+    }
+
+def main():
+    """Handles user input with validation and prints the computed deductions."""
+    while True:
+        try:
+            salary = float(input("Enter your monthly salary: "))
+            if salary < 0:
+                print("Please enter a valid positive salary.")
+                continue
+            break
+        except ValueError:
+            print("Invalid input. Please enter a numeric value.")
+
+    result = compute_deductions(salary)
+    
+    if result:
+        for key, value in result.items():
+            print(f"{key}: {value:.2f}")
+
+# Run the program
+main()
+
 
 
 
