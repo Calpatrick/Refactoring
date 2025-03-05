@@ -146,54 +146,74 @@ def main():
 if __name__ == "__main__":
     main()
 
+# Key Improvements
 
-Add input validation & error handling - Tester & Documentor (Maulod)
+Separate functions for each responsibility (computation, input handling, display).
+ Better maintainability – any changes (e.g., new tax rates) can be made in a single function.
+ Improved reusability – functions can be used independently in other programs.
+ Error handling included – prevents crashes from invalid user input.
+ Uses if __name__ == "__main__" – ensures proper execution when used as a script.
+
+
+
+# Add input validation & error handling - Tester & Documentor (Maulod)
 
 def compute_deductions(salary):
-    """Calculates deductions and net salary based on given salary."""
+    """Calculates and returns salary deductions."""
+    # Constants
     SSS_CONTRIBUTION = 1200
     PHILHEALTH_RATE = 0.05
     PAGIBIG_CONTRIBUTION = 100
-    TAX = 1875  # Assuming fixed value for simplicity
+    TAX = 1875  # Fixed tax for simplicity
 
-    if salary < 0:
-        print("Error: Salary cannot be negative.")
-        return None
-
+    # Compute deductions
     philhealth = (salary * PHILHEALTH_RATE) / 2
-    deductions = SSS_CONTRIBUTION + philhealth + PAGIBIG_CONTRIBUTION + TAX
-    net_salary = salary - deductions
+    total_deductions = SSS_CONTRIBUTION + philhealth + PAGIBIG_CONTRIBUTION + TAX
+    net_salary = salary - total_deductions
 
     return {
         "Gross Salary": salary,
         "SSS Deduction": SSS_CONTRIBUTION,
-        "PhilHealth Deduction": philhealth,
+        "PhilHealth Deduction": round(philhealth, 2),
         "Pag-IBIG Deduction": PAGIBIG_CONTRIBUTION,
         "Tax Deduction": TAX,
-        "Total Deductions": deductions,
-        "Net Salary": net_salary
+        "Total Deductions": round(total_deductions, 2),
+        "Net Salary": round(net_salary, 2)
     }
 
-def main():
-    """Handles user input with validation and prints the computed deductions."""
+def get_valid_salary():
+    """Prompts user for salary input with validation."""
     while True:
         try:
             salary = float(input("Enter your monthly salary: "))
-            if salary < 0:
-                print("Please enter a valid positive salary.")
-                continue
-            break
+            if salary <= 0:
+                print("Error: Salary must be greater than zero. Please try again.")
+            else:
+                return salary
         except ValueError:
             print("Invalid input. Please enter a numeric value.")
 
-    result = compute_deductions(salary)
-    
-    if result:
-        for key, value in result.items():
-            print(f"{key}: {value:.2f}")
+def display_deductions(deductions):
+    """Displays salary breakdown in a readable format."""
+    print("\n=== Salary Breakdown ===")
+    for key, value in deductions.items():
+        print(f"{key}: {value:,.2f}")
+
+def main():
+    """Main function to execute the program."""
+    salary = get_valid_salary()
+    deductions = compute_deductions(salary)
+    display_deductions(deductions)
 
 # Run the program
-main()
+if __name__ == "__main__":
+    main()
+# Key improvements
+
+Separated input validation (get_valid_salary())
+ Clear function responsibilities (compute_deductions(), display_deductions())
+ Formatted currency output (e.g., 1,500.00 instead of 1500.0)
+ Error handling for zero or negative salary
 
 
 
