@@ -33,7 +33,7 @@ Code Duplication
 The function compute_deductions(salary) is defined before salary is even assigned. Calling compute_deductions(salary) at the end forces repetition of logic.
 The deductions could be handled within a return statement instead of repeating the calculation in multiple places.
 
-#Improve code readability  - Refactoring Specialist (Roslinda)
+# Improve code readability  - Refactoring Specialist (Roslinda)
 
 def compute_deductions(salary):
     """Calculates total deductions and net salary based on given salary."""
@@ -72,7 +72,7 @@ try:
 except ValueError:
     print("Error: Invalid input! Please enter a valid numeric value.")
     
-#Key improvements:
+# Key improvements:
 
  Constants for fixed values – makes the code easier to modify and understand.
  Formatted output – uses :,.2f for better number readability (e.g., 10,000.00 instead of 10000).
@@ -81,7 +81,7 @@ except ValueError:
  Clear section headers (--- Salary Breakdown ---) – makes output more readable.
 
 
-#Convert to Modular Functions - Lead Developer (Maulod)
+# Convert to Modular Functions - Lead Developer (Maulod)
 def get_user_salary():
     """Handles user input and ensures it's a valid positive number."""
     while True:
