@@ -40,31 +40,31 @@ SSS_CONTRIBUTION = 1200
 PAGIBIG_CONTRIBUTION = 100
 FIXED_TAX = 1875  # Placeholder for simplicity
 
-def compute_deductions(salary):
-    """Calculates total deductions and net salary based on given salary."""
+    def compute_deductions(salary):
+        """Calculates total deductions and net salary based on given salary."""
     
-    # Computed contributions
-    philhealth = (salary * 0.05) / 2  # PhilHealth deduction
-    tax = FIXED_TAX  
+        # Computed contributions
+        philhealth = (salary * 0.05) / 2  # PhilHealth deduction
+        tax = FIXED_TAX  
 
-    # Total deductions
-    total_deductions = SSS_CONTRIBUTION + philhealth + PAGIBIG_CONTRIBUTION + tax
-    net_salary = salary - total_deductions
+        # Total deductions
+        total_deductions = SSS_CONTRIBUTION + philhealth + PAGIBIG_CONTRIBUTION + tax
+        net_salary = salary - total_deductions
 
-    return net_salary, total_deductions, philhealth, tax
+        return net_salary, total_deductions, philhealth, tax
 
-def display_salary_details(salary, net_salary, total_deductions, philhealth, tax):
-    """Displays a detailed salary breakdown."""
-    print("\n--- Salary Breakdown ---")
-    print(f"Gross Salary: {salary:,.2f}")
-    print(f"SSS Deduction: {SSS_CONTRIBUTION:,.2f}")
-    print(f"PhilHealth Deduction: {philhealth:,.2f}")
-    print(f"Pag-IBIG Deduction: {PAGIBIG_CONTRIBUTION:,.2f}")
-    print(f"Tax Deduction: {tax:,.2f}")
-    print(f"Total Deductions: {total_deductions:,.2f}")
-    print(f"Net Salary: {net_salary:,.2f}")
+    def display_salary_details(salary, net_salary, total_deductions, philhealth, tax):
+        """Displays a detailed salary breakdown."""
+        print("\n--- Salary Breakdown ---")
+        print(f"Gross Salary: {salary:,.2f}")
+        print(f"SSS Deduction: {SSS_CONTRIBUTION:,.2f}")
+        print(f"PhilHealth Deduction: {philhealth:,.2f}")
+        print(f"Pag-IBIG Deduction: {PAGIBIG_CONTRIBUTION:,.2f}")
+        print(f"Tax Deduction: {tax:,.2f}")
+        print(f"Total Deductions: {total_deductions:,.2f}")
+        print(f"Net Salary: {net_salary:,.2f}")
 
-# Get user input
+ Get user input
 try:
     salary = float(input("Enter your monthly salary: "))
     
