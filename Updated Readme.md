@@ -89,71 +89,63 @@ except ValueError:
 
 
 # Convert to Modular Functions - Lead Developer (Maulod)
+def compute_deductions(salary):
+    """Calculates deductions and net salary based on given salary."""
+    
+    # Define contribution constants
+    SSS_CONTRIBUTION = 1200
+    PHILHEALTH_RATE = 0.05
+    PAGIBIG_CONTRIBUTION = 100
+    FIXED_TAX = 1875  # Assuming a fixed tax for simplicity
+
+    if salary <= 0:
+        print("Error: Salary must be a positive value.")
+        return None
+
+    # Compute deductions
+    philhealth = (salary * PHILHEALTH_RATE) / 2
+    total_deductions = SSS_CONTRIBUTION + philhealth + PAGIBIG_CONTRIBUTION + FIXED_TAX
+    net_salary = salary - total_deductions
+
+    return {
+        "Gross Salary": salary,
+        "SSS Deduction": SSS_CONTRIBUTION,
+        "PhilHealth Deduction": philhealth,
+        "Pag-IBIG Deduction": PAGIBIG_CONTRIBUTION,
+        "Tax Deduction": FIXED_TAX,
+        "Total Deductions": total_deductions,
+        "Net Salary": net_salary
+    }
+
 def get_user_salary():
-    """Handles user input and ensures it's a valid positive number."""
+    """Handles user input and ensures it is a valid positive number."""
     while True:
         try:
             salary = float(input("Enter your monthly salary: "))
-            if salary < 0:
-                print("Salary must be a positive value. Please try again.")
-            else:
+            if salary > 0:
                 return salary
+            print("Error: Please enter a valid positive salary.")
         except ValueError:
-            print("Invalid input! Please enter a numeric value.")
+            print("Invalid input. Please enter a numeric value.")
 
-def compute_sss():
-    """Returns the fixed SSS contribution."""
-    return 1200
-
-def compute_philhealth(salary):
-    """Calculates the PhilHealth deduction based on salary."""
-    return (salary * 0.05) / 2
-
-def compute_pagibig():
-    """Returns the fixed Pag-IBIG contribution."""
-    return 100
-
-def compute_tax(salary):
-    """Computes tax based on salary brackets."""
-    if salary <= 20000:
-        return salary * 0.05
-    elif salary <= 50000:
-        return salary * 0.1
-    else:
-        return salary * 0.15
-
-def compute_deductions(salary):
-    """Calculates total deductions and net salary."""
-    sss = compute_sss()
-    philhealth = compute_philhealth(salary)
-    pagibig = compute_pagibig()
-    tax = compute_tax(salary)
-
-    total_deductions = sss + philhealth + pagibig + tax
-    net_salary = salary - total_deductions
-
-    return net_salary, total_deductions, sss, philhealth, pagibig, tax
-
-def display_salary_details(salary, net_salary, total_deductions, sss, philhealth, pagibig, tax):
-    """Displays the salary breakdown."""
-    print("\nSalary Breakdown:")
-    print(f"Gross Salary: {salary}")
-    print(f"SSS Deduction: {sss}")
-    print(f"PhilHealth Deduction: {philhealth:.2f}")
-    print(f"Pag-IBIG Deduction: {pagibig}")
-    print(f"Tax Deduction: {tax:.2f}")
-    print(f"Total Deductions: {total_deductions:.2f}")
-    print(f"Net Salary: {net_salary:.2f}")
+def display_salary_details(result):
+    """Displays the computed salary breakdown in a structured format."""
+    print("\n--- Salary Breakdown ---")
+    for key, value in result.items():
+        print(f"{key}: {value:,.2f}")
 
 def main():
     """Main function to execute the program."""
     salary = get_user_salary()
-    net_salary, total_deductions, sss, philhealth, pagibig, tax = compute_deductions(salary)
-    display_salary_details(salary, net_salary, total_deductions, sss, philhealth, pagibig, tax)
+    result = compute_deductions(salary)
+    
+    if result:
+        display_salary_details(result)
 
 # Run the program
 if __name__ == "__main__":
     main()
+
 
 Add input validation & error handling - Tester & Documentor (Maulod)
 
