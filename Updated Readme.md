@@ -193,20 +193,20 @@ def get_valid_salary():
         except ValueError:
             print("Invalid input. Please enter a numeric value.")
 
-def display_deductions(deductions):
+    def display_deductions(deductions):
     """Displays salary breakdown in a readable format."""
     print("\n=== Salary Breakdown ===")
     for key, value in deductions.items():
         print(f"{key}: {value:,.2f}")
 
-def main():
+    def main():
     """Main function to execute the program."""
     salary = get_valid_salary()
     deductions = compute_deductions(salary)
     display_deductions(deductions)
 
-# Run the program
-if __name__ == "__main__":
+    Run the program
+    if __name__ == "__main__":
     main()
 # Key improvements
 
