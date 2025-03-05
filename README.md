@@ -2,8 +2,11 @@
 **Role Responsibilities**
 
 Project Manager Oversees progress, ensures timely completion. --------------------
+
 Lead Developer Implements major code improvements. -------------------------------
+
 Refactoring Specialist Identifies technical debt and suggests improvements. -------  Maulod & Roslinda
+
 Git Manager Manages Git operations (branching, commits, documentation). - ------
                                                                     ----------
 Tester/Documenter Writes test cases and updates documentation.--------
