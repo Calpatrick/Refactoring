@@ -35,42 +35,7 @@ The deductions could be handled within a return statement instead of repeating t
 
 # Improve code readability  - Refactoring Specialist (Roslinda)
 
-def compute_deductions(salary):
-    """Calculates total deductions and net salary based on given salary."""
-    
-    # Fixed contributions
-    SSS_CONTRIBUTION = 1200
-    PAGIBIG_CONTRIBUTION = 100
 
-    # Computed contributions
-    philhealth = (salary * 0.05) / 2  # PhilHealth deduction
-    tax = 1875  # Fixed tax amount (should be dynamic in real cases)
-
-    # Total deductions
-    total_deductions = SSS_CONTRIBUTION + philhealth + PAGIBIG_CONTRIBUTION + tax
-    net_salary = salary - total_deductions
-
-    # Display salary breakdown
-    print("\n--- Salary Breakdown ---")
-    print(f"Gross Salary: {salary:,.2f}")
-    print(f"SSS Deduction: {SSS_CONTRIBUTION:,.2f}")
-    print(f"PhilHealth Deduction: {philhealth:,.2f}")
-    print(f"Pag-IBIG Deduction: {PAGIBIG_CONTRIBUTION:,.2f}")
-    print(f"Tax Deduction: {tax:,.2f}")
-    print(f"Total Deductions: {total_deductions:,.2f}")
-    print(f"Net Salary: {net_salary:,.2f}")
-
-# Get user input
-try:
-    salary = float(input("Enter your monthly salary: "))
-    
-    if salary < 0:
-        print("Error: Salary must be a positive value.")
-    else:
-        compute_deductions(salary)
-
-except ValueError:
-    print("Error: Invalid input! Please enter a valid numeric value.")
     
 # Key improvements:
 
