@@ -117,7 +117,7 @@ def compute_deductions(salary):
         "Net Salary": net_salary
     }
 
-def get_user_salary():
+    def get_user_salary():
     """Handles user input and ensures it is a valid positive number."""
     while True:
         try:
@@ -128,13 +128,13 @@ def get_user_salary():
         except ValueError:
             print("Invalid input. Please enter a numeric value.")
 
-def display_salary_details(result):
+    def display_salary_details(result):
     """Displays the computed salary breakdown in a structured format."""
     print("\n--- Salary Breakdown ---")
     for key, value in result.items():
         print(f"{key}: {value:,.2f}")
 
-def main():
+    def main():
     """Main function to execute the program."""
     salary = get_user_salary()
     result = compute_deductions(salary)
@@ -142,8 +142,8 @@ def main():
     if result:
         display_salary_details(result)
 
-# Run the program
-if __name__ == "__main__":
+    Run the program
+    if __name__ == "__main__":
     main()
 
 # Key Improvements
